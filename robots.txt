@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://riki-8a5a3.web.app/sitemap.xml
