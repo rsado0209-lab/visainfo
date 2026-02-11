@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>世界各国ビザ取得ガイド</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700&family=Outfit:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #0f1419;
+      --bg-card: #1a2332;
+      --bg-card-hover: #243044;
+      --accent: #3b82f6;
+      --accent-soft: rgba(59, 130, 246, 0.15);
+      --text-primary: #f1f5f9;
+      --text-secondary: #94a3b8;
+      --border: #334155;
+      --success: #22c55e;
+      --warning: #f59e0b;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', 'Outfit', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(ellipse at 20% 20%, rgba(59, 130, 246, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(34, 197, 94, 0.05) 0%, transparent 50%);
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1.5rem;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    h1 {
+      font-family: 'Outfit', 'Noto Sans JP', sans-serif;
+      font-size: 2rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #60a5fa 0%, #34d399 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .subtitle {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      font-weight: 400;
+    }
+
+    .disclaimer {
+      background: var(--accent-soft);
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 12px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 2.5rem;
+      font-size: 0.8rem;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .flags-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .country-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-align: center;
+    }
+
+    .country-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .country-card.active {
+      background: var(--bg-card-hover);
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+
+    .flag {
+      width: 80px;
+      height: 56px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin: 0 auto 0.75rem;
+      display: block;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .country-name {
+      font-weight: 600;
+      font-size: 1rem;
+    }
+
+    .visa-detail {
+      display: none;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin-top: 1rem;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .visa-detail.show {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .visa-detail h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .visa-detail h3 img {
+      width: 32px;
+      height: 22px;
+      border-radius: 4px;
+    }
+
+    .visa-section {
+      margin-bottom: 1.25rem;
+    }
+
+    .visa-section:last-child {
+      margin-bottom: 0;
+    }
+
+    .visa-section h4 {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .visa-section ul, .visa-section p {
+      font-size: 0.9rem;
+      line-height: 1.7;
+      color: var(--text-primary);
+    }
+
+    .visa-section ul {
+      padding-left: 1.25rem;
+    }
+
+    .visa-section li {
+      margin-bottom: 0.35rem;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .badge-visa-free {
+      background: rgba(34, 197, 94, 0.2);
+      color: var(--success);
+    }
+
+    .badge-required {
+      background: rgba(245, 158, 11, 0.2);
+      color: var(--warning);
+    }
+
+    .source-link {
+      margin-top: 1.25rem;
+      padding-top: 1rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .source-link a {
+      color: var(--accent);
+      font-size: 0.85rem;
+      text-decoration: none;
+    }
+
+    .source-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>世界各国ビザ取得ガイド</h1>
+      <p class="subtitle">日本人向け・観光目的の入国条件（大使館・政府発表情報）</p>
+    </header>
+
+    <div class="disclaimer">
+      ⚠️ 本情報は参考用です。ビザ制度は変更されることがあります。渡航前に各国大使館または政府公式サイトで最新情報をご確認ください。
+    </div>
+
+    <div class="flags-grid">
+      <div class="country-card" data-country="usa">
+        <img src="https://flagcdn.com/w320/us.png" alt="アメリカ" class="flag" loading="lazy">
+        <span class="country-name">アメリカ</span>
+      </div>
+      <div class="country-card" data-country="uk">
+        <img src="https://flagcdn.com/w320/gb.png" alt="イギリス" class="flag" loading="lazy">
+        <span class="country-name">イギリス</span>
+      </div>
+      <div class="country-card" data-country="australia">
+        <img src="https://flagcdn.com/w320/au.png" alt="オーストラリア" class="flag" loading="lazy">
+        <span class="country-name">オーストラリア</span>
+      </div>
+      <div class="country-card" data-country="thailand">
+        <img src="https://flagcdn.com/w320/th.png" alt="タイ" class="flag" loading="lazy">
+        <span class="country-name">タイ</span>
+      </div>
+      <div class="country-card" data-country="china">
+        <img src="https://flagcdn.com/w320/cn.png" alt="中国" class="flag" loading="lazy">
+        <span class="country-name">中国</span>
+      </div>
+    </div>
+
+    <div id="visa-details">
+      <div class="visa-detail" id="usa">
+        <h3><img src="https://flagcdn.com/w80/us.png" alt=""> アメリカ</h3>
+        <div class="visa-section">
+          <span class="badge badge-visa-free">ESTA（ビザ免除）</span>
+          <p>90日以下の観光ならビザ免除プログラム（ESTA）で入国可能</p>
+          <ul>
+            <li>申請料：40ドル</li>
+            <li>出発72時間以上前の申請推奨</li>
+            <li>有効期間：2年間（パスポート期限内）</li>
+          </ul>
+        </div>
+        <div class="visa-section">
+          <span class="badge badge-required">B-2観光ビザ</span>
+          <p>90日超の滞在やESTA利用不可の場合</p>
+          <ul>
+            <li>オンライン申請書DS-160、パスポート、証明写真</li>
+            <li>残高証明書、旅程表、在職証明など</li>
+            <li>大使館での面接が必要</li>
+          </ul>
+        </div>
+        <div class="source-link">
+          出典：<a href="https://jp.usembassy.gov/ja/visas-ja/esta-information-ja/" target="_blank" rel="noopener">在日米国大使館・領事館</a>
+        </div>
+      </div>
+
+      <div class="visa-detail" id="uk">
+        <h3><img src="https://flagcdn.com/w80/gb.png" alt=""> イギリス</h3>
+        <div class="visa-section">
+          <span class="badge badge-visa-free">ビザ免除（6ヶ月以内）</span>
+          <p>6ヶ月以内の観光はビザ不要（就労・収入活動は不可）</p>
+        </div>
+        <div class="visa-section">
+          <span class="badge badge-required">ETA必須（2025年1月～）</span>
+          <ul>
+            <li>申請料：16ポンド（2025年4月～改定）</li>
+            <li>有効期間：2年間</li>
+            <li>申請：Gov.uk公式サイトまたはアプリ</li>
+            <li>審査：数分～3営業日程度</li>
+          </ul>
+        </div>
+        <div class="source-link">
+          出典：<a href="https://www.gov.uk/browse/visas-immigration" target="_blank" rel="noopener">英国政府ビザ・入国管理</a>
+        </div>
+      </div>
+
+      <div class="visa-detail" id="australia">
+        <h3><img src="https://flagcdn.com/w80/au.png" alt=""> オーストラリア</h3>
+        <div class="visa-section">
+          <span class="badge badge-required">ビザ必須</span>
+          <p>短期観光にもビザが必要です</p>
+        </div>
+        <div class="visa-section">
+          <h4>ETA（電子入国許可）</h4>
+          <ul>
+            <li>滞在：1回最大3ヶ月</li>
+            <li>有効期限：発行から1年間</li>
+            <li>申請：ETAアプリまたは内務省オンライン</li>
+            <li>申請料：約20豪ドル</li>
+          </ul>
+        </div>
+        <div class="visa-section">
+          <h4>観光ビザ（サブクラス600）</h4>
+          <ul>
+            <li>滞在：通常3ヶ月、最大12ヶ月も可</li>
+            <li>ImmiAccountでオンライン申請</li>
+          </ul>
+        </div>
+        <div class="source-link">
+          出典：<a href="https://www.homeaffairs.gov.au/" target="_blank" rel="noopener">オーストラリア内務省</a>
+        </div>
+      </div>
+
+      <div class="visa-detail" id="thailand">
+        <h3><img src="https://flagcdn.com/w80/th.png" alt=""> タイ</h3>
+        <div class="visa-section">
+          <span class="badge badge-visa-free">ビザ免除（30日以内）</span>
+          <ul>
+            <li>30日以内、年2回までビザ不要</li>
+            <li>所持金：1万バーツ以上（世帯2万バーツ）</li>
+            <li>パスポート残存期間6ヶ月以上</li>
+            <li>出国用航空券の所持が必要</li>
+          </ul>
+        </div>
+        <div class="visa-section">
+          <h4>TDAC（タイデジタル到着カード）</h4>
+          <p>2025年5月1日～到着前72時間以内のオンライン登録が義務（無料）</p>
+        </div>
+        <div class="visa-section">
+          <h4>観光ビザ（30日超の場合）</h4>
+          <p>在外タイ大使館で取得、最大60日滞在可能</p>
+        </div>
+        <div class="source-link">
+          出典：<a href="https://www.th.emb-japan.go.jp/itpr_ja/consular_visa15.html" target="_blank" rel="noopener">在タイ日本国大使館</a> / タイ政府
+        </div>
+      </div>
+
+      <div class="visa-detail" id="china">
+        <h3><img src="https://flagcdn.com/w80/cn.png" alt=""> 中国</h3>
+        <div class="visa-section">
+          <span class="badge badge-visa-free">ビザ免除（2024.11〜2026.12）</span>
+          <ul>
+            <li>30日以内の短期滞在がビザ免除</li>
+            <li>対象：観光、商貿、親族訪問、交流、トランジット</li>
+            <li>留学・就労・31日以上はビザ申請が必要</li>
+          </ul>
+        </div>
+        <div class="visa-section">
+          <h4>ビザ申請の場合</h4>
+          <ul>
+            <li>オンライン申請表、パスポート、証明写真</li>
+            <li>中国ビザ申請センター（東京）で申請</li>
+            <li>指紋採取あり（一定条件で免除）</li>
+          </ul>
+        </div>
+        <div class="source-link">
+          出典：<a href="https://jp.china-embassy.gov.cn/jpn/lszc/hzqzyw/" target="_blank" rel="noopener">中華人民共和国駐日本国大使館</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const cards = document.querySelectorAll('.country-card');
+    const details = document.querySelectorAll('.visa-detail');
+
+    cards.forEach(card => {
+      card.addEventListener('click', () => {
+        const countryId = card.dataset.country;
+
+        // アクティブ状態の切り替え
+        cards.forEach(c => c.classList.remove('active'));
+        card.classList.add('active');
+
+        // 詳細の表示切り替え
+        details.forEach(detail => {
+          if (detail.id === countryId) {
+            detail.classList.add('show');
+            detail.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+          } else {
+            detail.classList.remove('show');
+          }
+        });
+      });
+    });
+
+    // ページ読み込み時は最初の国を表示
+    if (cards.length > 0) {
+      cards[0].click();
+    }
+  </script>
+</body>
+</html>
