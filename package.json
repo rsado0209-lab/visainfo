@@ -1,0 +1,24 @@
+{
+  "name": "visa",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rsado0209-lab/visainfo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/rsado0209-lab/visainfo/issues"
+  },
+  "homepage": "https://github.com/rsado0209-lab/visainfo#readme",
+  "dependencies": {
+    "firebase": "^12.9.0"
+  }
+}
